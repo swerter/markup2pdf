@@ -47,4 +47,4 @@ app.mount MyApp do
 end
 
 # app.run :server => :Thin, :Port => $PORT
-app.run :Port => 7777
+app.run :Port => $PORT
