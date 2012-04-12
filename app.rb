@@ -4,6 +4,20 @@ require 'RedCloth'
 
 require 'pdfkit'
 
+PDFKit.configure do |config|
+  config.wkhtmltopdf = '/bin/wkhtmltopdf-linux-amd64'
+#   config.default_options = {
+#     :page_size => 'a4',
+#     :print_media_type => true
+#   }
+  # config.default_options = {
+  #   :page_size => 'Legal',
+  #   :print_media_type => true
+  # }
+  # config.root_url = "http://localhost" # Use only if your external hostname is unavailable on the server.
+end
+
+
 class MyApp
 
     include Presto::Api
