@@ -1,0 +1,17 @@
+%h2 Markup2PDF
+%p 
+  Converts your markupped text to pdf. You can use at the moment 
+  %a{:href => 'http://daringfireball.net/projects/markdown/syntax'} Markdown
+  or
+  %a{:href => 'http://redcloth.org/hobix.com/textile/'} Textile.
+%form{ :action => "converted.pdf", :method => "post"}
+  %input{:type => "submit", :value => "Go", :class => "button"}
+  %br
+  %label{:for => "converter"} what converter do you want to use?
+  %select
+    %option{:value => "markdown", :selected => true} Markdown
+    %option{:value => "textile"} Textile
+  %br
+  %textarea{:name => "text", :cols => 150, :rows => 100}
+  %br
+  %input{:type => "submit", :value => "Go", :class => "button"}
