@@ -40,11 +40,3 @@ class MyApp
 
     end
 end
-
-app = Presto::App.new
-app.mount MyApp do
-  view.engine :Haml
-end
-
-app.run :server => :Thin, :Port => $PORT
-# app.run :Port => 7777
