@@ -4,7 +4,6 @@ require 'RedCloth'
 
 require 'pdfkit'
 
-puts "huuuuuuuuuuuuuuu"
 class MyApp
 
     include Presto::Api
