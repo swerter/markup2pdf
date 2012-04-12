@@ -5,7 +5,7 @@ require 'RedCloth'
 require 'pdfkit'
 
 PDFKit.configure do |config|
-  config.wkhtmltopdf = '/bin/wkhtmltopdf-linux-amd64'
+  config.wkhtmltopdf = './bin/wkhtmltopdf-linux-amd64'
 #   config.default_options = {
 #     :page_size => 'a4',
 #     :print_media_type => true
