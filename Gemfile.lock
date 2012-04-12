@@ -18,7 +18,6 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.3.3)
-    wkhtmltopdf-heroku (0.1.3)
 
 PLATFORMS
   ruby
@@ -30,4 +29,3 @@ DEPENDENCIES
   pdfkit-heroku (~> 0.1.2)
   presto
   thin
-  wkhtmltopdf-heroku
