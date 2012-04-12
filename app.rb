@@ -4,9 +4,6 @@ require 'RedCloth'
 
 require 'pdfkit'
 
-require 'irb_drop'
-
-
 class MyApp
 
     include Presto::Api
@@ -34,7 +31,6 @@ class MyApp
         kit = PDFKit.new(html_string)
         pdf = kit.to_pdf
         http.inspect
-#           binding.irb_drop
         pdf
 
 
