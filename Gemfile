@@ -6,5 +6,5 @@ gem 'presto'
 gem 'thin'
 gem 'kramdown'
 gem 'RedCloth'
-# gem 'pdfkit'
-gem "pdfkit-heroku", "~> 0.1.2"
+gem 'pdfkit'
+# gem "pdfkit-heroku", "~> 0.1.2"

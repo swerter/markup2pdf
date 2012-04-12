@@ -6,8 +6,6 @@ GEM
     eventmachine (0.12.10)
     kramdown (0.13.5)
     pdfkit (0.5.2)
-    pdfkit-heroku (0.1.2)
-      pdfkit
     presto (0.3.6)
       rack (~> 1.3)
       tilt (~> 1.3)
@@ -24,6 +22,6 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   kramdown
-  pdfkit-heroku (~> 0.1.2)
+  pdfkit
   presto
   thin
