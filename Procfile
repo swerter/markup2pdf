@@ -1,1 +1,1 @@
-web: bundle exec ruby app.rb -p 3000
+web: bundle exec ruby app.rb -p 80

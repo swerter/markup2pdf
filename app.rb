@@ -46,5 +46,5 @@ app.mount MyApp do
   view.engine :Haml
 end
 
-app.run :server => :Thin, :Port => 7777
+app.run :server => :Thin
 # app.run :Port => 7777
