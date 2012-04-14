@@ -8,8 +8,8 @@
   %input{:type => "submit", :value => "Go", :class => "button"}
   %br
   %label{:for => "converter"} what converter do you want to use?
-  %select
-    %option{:value => "markdown", :selected => true} Markdown
+  %select{:name => 'converter'}
+    %option{:value => "markdown", :selected => 'selected'} Markdown
     %option{:value => "textile"} Textile
   %br
   %textarea{:name => "text", :cols => 150, :rows => 100}
