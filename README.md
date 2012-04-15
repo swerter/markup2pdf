@@ -17,3 +17,7 @@ $ heroku create
 $ git push heroku master
 ```
 
+Credits
+---
+
+The project is based on [Presto](https://github.com/slivu/presto.git). The pdf conversation uses [pdfkit](https://github.com/pdfkit/pdfkit.git), which is based on [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf/).
