@@ -26,24 +26,52 @@ class MyApp
   def index
     view.render :index
   end
+  
+  def debug
+    http.params.inspect
+  end
 
-  def converted____pdf
+  def converted
     if http.request_method == 'POST'
+      format = http.params[:format]
       text = http.params[:text]
       converter = http.params[:converter] || 'markdown'
-
-      html_string = case converter
-                    when 'markdown' then Kramdown::Document.new(text).to_html
-                    when 'textile' then RedCloth.new(text).to_html
-                    else
-                      http.params
-                    end
-      kit = PDFKit.new(html_string)
-      pdf = kit.to_pdf
-      http.inspect
-      pdf
+      html_string = to_html(text, converter)
+      case format
+      when 'HTML' then 
+        @text = text
+        @html_string = html_string
+        view.render :converted
+      when 'PDF' then
+        kit = PDFKit.new(html_string)
+        pdf = kit.to_pdf
+        pdf
+      else
+        http.params
+      end
     else
       view.render :index
+    end
+  end
+
+#   def converted____pdf
+#     if http.request_method == 'POST'
+#       text = http.params[:text]
+#       converter = http.params[:converter] || 'markdown'
+
+#     else
+#       view.render :index
+#     end
+#   end
+
+  private
+
+  def to_html(text, converter = 'markdown')
+    case converter
+    when 'markdown' then Kramdown::Document.new(text).to_html
+    when 'textile' then RedCloth.new(text).to_html
+    else
+      text
     end
   end
 

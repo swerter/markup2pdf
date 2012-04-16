@@ -1,0 +1,4 @@
+%form{ :action => "converted", :method => "post"}
+  %input{:type => "hidden", :name => 'text', :value => @text} 
+  %input{:type => "submit", :value => "PDF", :name => "format",  :class => "button"}
+= @html_string
