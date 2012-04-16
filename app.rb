@@ -4,13 +4,17 @@ require 'RedCloth'
 
 require 'pdfkit'
 
-PDFKit.configure do |config|
-  config.wkhtmltopdf = './bin/wkhtmltopdf-amd64'
-  #   config.default_options = {
-  #     :page_size => 'a4',
-  #     :print_media_type => true
-  #   }
-  # config.root_url = "http://localhost" # Use only if your external hostname is unavailable on the server.
+require 'rbconfig'
+
+unless RbConfig::CONFIG['host_os'] =~ /darwin/
+  PDFKit.configure do |config|
+    config.wkhtmltopdf = './bin/wkhtmltopdf-amd64'
+    #   config.default_options = {
+    #     :page_size => 'a4',
+    #     :print_media_type => true
+    #   }
+    # config.root_url = "http://localhost" # Use only if your external hostname is unavailable on the server.
+  end
 end
 
 
@@ -18,10 +22,6 @@ class MyApp
 
   include Presto::Api
   http.map
-
-  http.content_type do
-    http.mime_type http.path =~ /converted.pdf$/ ? '.pdf' : '.html'
-  end
 
   def index
     view.render :index
@@ -43,9 +43,15 @@ class MyApp
         @html_string = html_string
         view.render :converted
       when 'PDF' then
+        http.content_type do
+          http.mime_type '.pdf'
+        end
+        
         kit = PDFKit.new(html_string)
         pdf = kit.to_pdf
+        http['Content-Type'] = http.mime_type('.pdf')
         pdf
+#         http.inspect
       else
         http.params
       end
@@ -54,15 +60,6 @@ class MyApp
     end
   end
 
-#   def converted____pdf
-#     if http.request_method == 'POST'
-#       text = http.params[:text]
-#       converter = http.params[:converter] || 'markdown'
-
-#     else
-#       view.render :index
-#     end
-#   end
 
   private
 
